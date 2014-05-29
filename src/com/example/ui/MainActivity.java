@@ -4,7 +4,6 @@ package com.example.ui;
  */
 import com.example.examhelper.R;
 import com.example.helper.HttpHelper;
-import com.example.net.ParseHandler;
 import com.example.utils.HttpPortUtils;
 
 import android.os.Bundle;
@@ -21,6 +20,7 @@ public class MainActivity extends Activity {
 		public void handleMessage(Message msg) {
 			switch(msg.what){
 			case 1:
+				
 				Log.i("resutl" ,(String)msg.obj);
 				break;
 			case 0:
@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		HttpHelper.sendHttpGet(mHandler, HttpPortUtils.GET_HTTP + HttpPortUtils.GET_HTTP_SORT + HttpPortUtils.AppKey, null);
-	}
+	} 
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
