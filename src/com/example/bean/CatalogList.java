@@ -12,13 +12,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.example.helper.UtilsHelper;
 
-public class CatalogList {
+
+public class CatalogList{
 	private ArrayList<Catalog> list = new ArrayList<Catalog>();
 	private String reason = "";
-	private static String[] subject = new String[]{
-		"语文","数学","英语","物理","化学","生物","历史","政治","地理"
-	};
 	public ArrayList<Catalog> getmCatalogList() {
 		return list;
 	}
@@ -40,8 +39,8 @@ public class CatalogList {
 		try {
 			JSONObject obj = new JSONObject(result);
 			JSONObject obj_total = obj.getJSONObject("result");
-			for(int i = 0;i < subject.length;i++){
-				JSONArray array = obj_total.getJSONArray(subject[i]);
+			for(int i = 0;i < UtilsHelper.subject_name.length;i++){
+				JSONArray array = obj_total.getJSONArray(UtilsHelper.subject_name[i]);
 				ArrayList<Catalog> list_chinese = new ArrayList<Catalog>();
 				for(int j = 0;j < array.length();j++){
 					Catalog catalog = new Catalog();
@@ -50,7 +49,7 @@ public class CatalogList {
 					catalog.setCatalog(obj_item.getString("catalog"));
 					list_chinese.add(catalog);
 				}
-				hashData.put(subject[i], list_chinese);
+				hashData.put(UtilsHelper.subject_name[i], list_chinese);
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();

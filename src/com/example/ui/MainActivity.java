@@ -10,6 +10,7 @@ import com.example.bean.Catalog;
 import com.example.bean.CatalogList;
 import com.example.examhelper.R;
 import com.example.helper.HttpHelper;
+import com.example.helper.UiHelper;
 import com.example.utils.HttpPortUtils;
 
 import android.os.Bundle;
@@ -19,7 +20,6 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	//view
@@ -68,7 +68,9 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-				Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_LONG).show();
+				Bundle bundle = new Bundle();
+				bundle.putInt("Subject_No", position);
+				UiHelper.IntentActivity(MainActivity.this, SubjectActivity.class, bundle);
 			}
 		});
 	}

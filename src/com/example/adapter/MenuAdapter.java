@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 import com.example.bean.Catalog;
 import com.example.examhelper.R;
+import com.example.helper.UtilsHelper;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -19,15 +20,13 @@ import android.widget.TextView;
 public class MenuAdapter extends BaseAdapter{
 	private Context mContext;
 	private HashMap<String, ArrayList<Catalog>> getResultData;
-	private String[] subject_name = new String[] { "语文", "数学", "英语", "物理",
-			"化学", "生物", "历史", "政治", "地理" };
 	public MenuAdapter(Context mContext,HashMap<String, ArrayList<Catalog>> getResultData){
 		this.mContext = mContext;
 		this.getResultData = getResultData;
 	}
 	@Override
 	public int getCount() {
-		return subject_name.length;
+		return UtilsHelper.subject_name.length;
 	}
 
 	@Override
@@ -53,7 +52,7 @@ public class MenuAdapter extends BaseAdapter{
 			vh = (ViewHolder) convertView.getTag();
 		}
 		vh.subject_iv.setBackgroundResource(R.drawable.ic_launcher);
-		vh.subject_tv.setText(subject_name[position]);
+		vh.subject_tv.setText(UtilsHelper.subject_name[position]);
 		return convertView;
 	}
 	class ViewHolder{

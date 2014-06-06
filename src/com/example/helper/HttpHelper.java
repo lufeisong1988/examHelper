@@ -58,6 +58,7 @@ public class HttpHelper {
 			public void onSuccess(Object o) {
 				String result = (String) o;
 				if(result != null && !result.equals("")){
+					Log.i("result",result + "");
 					msg.what = 1;
 					msg.obj = result;
 					mHandler.sendMessage(msg);
