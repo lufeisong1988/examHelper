@@ -54,7 +54,7 @@ public class CatalogList{
 					list.add(catalog);
 				}
 				hashData.put(UtilsHelper.subject_name[i], list);
-				ac.setObject(list, UtilsHelper.subject_name[i]);
+				ac.setObjectToFile(list, UtilsHelper.subject_name[i]);
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();

@@ -13,7 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 /**
- * 试题适配器
+ * 科目 分类适配器
  * @author lufeisong
  *
  */

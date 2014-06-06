@@ -8,15 +8,14 @@ import com.example.adapter.ViewPagerListViewAdapter;
 import com.example.bean.Catalog;
 import com.example.examhelper.R;
 import com.example.helper.AppContext;
+import com.example.helper.UiHelper;
 import com.example.helper.UtilsHelper;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class SubjectActivity extends Activity{
 	private ListView lv;
@@ -37,7 +36,7 @@ public class SubjectActivity extends Activity{
 	private void initData(){
 		ac = (AppContext) getApplication();
 		position = getIntent().getExtras().getInt("Subject_No");
-		ArrayList<Catalog> list_chinese = (ArrayList<Catalog>) ac.getObject(UtilsHelper.subject_name[position]);
+		final ArrayList<Catalog> list_chinese = (ArrayList<Catalog>) ac.getObjectFromFile(UtilsHelper.subject_name[position]);
 		adapter = new ViewPagerListViewAdapter(this,list_chinese );
 		lv.setAdapter(adapter);
 		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -45,7 +44,11 @@ public class SubjectActivity extends Activity{
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				Toast.makeText(SubjectActivity.this, arg2 + "", Toast.LENGTH_LONG).show();				
+				String id = list_chinese.get(arg2).getId();
+				Bundle bundle = new Bundle();
+				bundle.putString("id", id);
+				UiHelper.IntentActivity(SubjectActivity.this, ItemActivity.class, bundle);
+				
 			}
 		});
 	}

@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	//view
@@ -41,8 +42,10 @@ public class MainActivity extends Activity {
 				}
 				break;
 			case 0:
+				Toast.makeText(MainActivity.this, "数据为空...", Toast.LENGTH_LONG).show();
 				break;
 			case -1:
+				Toast.makeText(MainActivity.this, "网络连接失败....", Toast.LENGTH_LONG).show();
 				break;
 			}
 			super.handleMessage(msg);
@@ -62,7 +65,8 @@ public class MainActivity extends Activity {
 	private void initData(){
 		menuDataAdapter = new MenuAdapter(this, getResultData);
 		menu_lv.setAdapter(menuDataAdapter);
-		HttpHelper.sendHttpGet(mHandler, HttpPortUtils.GET_HTTP_SUBJECT + HttpPortUtils.GET_HTTP_SUBJECT_SORT + HttpPortUtils.AppKey, null);
+		String url = HttpPortUtils.GET_HTTP_SUBJECT + HttpPortUtils.GET_HTTP_SUBJECT_SORT + HttpPortUtils.AppKey;
+		HttpHelper.sendHttpGet(mHandler, url, null);
 	}
 	private void listener(){
 		menu_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
