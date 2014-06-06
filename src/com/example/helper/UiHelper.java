@@ -1,5 +1,7 @@
 package com.example.helper;
-
+/**
+ * activity帮助类
+ */
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;

@@ -7,7 +7,6 @@ import com.example.examhelper.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.widget.ListView;
 
 public class ItemActivity extends Activity{
 	private ViewPager itemVP;

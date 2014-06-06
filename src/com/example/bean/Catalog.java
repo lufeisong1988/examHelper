@@ -2,11 +2,13 @@ package com.example.bean;
 
 import java.io.Serializable;
 
+
 /**
  * 获取 试题目录（单个）
  * @author lufeisong
  *
  */
+@SuppressWarnings("serial")
 public class Catalog implements Serializable{
 	private String id = "";
 	private String catalog = "";

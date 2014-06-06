@@ -19,10 +19,10 @@ import android.widget.TextView;
 
 public class MenuAdapter extends BaseAdapter{
 	private Context mContext;
-	private HashMap<String, ArrayList<Catalog>> getResultData;
+//	private HashMap<String, ArrayList<Catalog>> getResultData;
 	public MenuAdapter(Context mContext,HashMap<String, ArrayList<Catalog>> getResultData){
 		this.mContext = mContext;
-		this.getResultData = getResultData;
+//		this.getResultData = getResultData;
 	}
 	@Override
 	public int getCount() {

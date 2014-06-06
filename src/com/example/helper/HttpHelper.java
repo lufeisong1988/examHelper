@@ -1,5 +1,9 @@
 package com.example.helper;
-
+/**
+ * http 工具类
+ * @author lufeisong
+ *
+ */
 import java.util.ArrayList;
 
 import android.os.Handler;
@@ -12,11 +16,7 @@ import com.example.net.DefaultThreadPool;
 import com.example.net.RequestParameter;
 import com.example.net.RequestResultCallback;
 
-/**
- * http 工具类
- * @author lufeisong
- *
- */
+
 public class HttpHelper {
 	static Message msg = new Message();
 	/*

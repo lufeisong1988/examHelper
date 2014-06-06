@@ -1,5 +1,6 @@
 package com.example.ui;
 /**
+ * 科目分类->单科目类型分类->类型分类详情
  * user jugg
  */
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class MainActivity extends Activity {
 			switch(msg.what){
 			case 1:
 				if((String)msg.obj != null && !((String)msg.obj).equals("") && !((String)msg.obj).equals("null")){
-					getResultData = CatalogList.getCatalogList((String)msg.obj);
+					getResultData = CatalogList.getCatalogList((String)msg.obj,MainActivity.this);
 					menuDataAdapter.notifyDataSetChanged();
 				}
 				break;

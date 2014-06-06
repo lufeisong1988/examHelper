@@ -1,21 +1,28 @@
 package com.example.ui;
-
+/**
+ * 单个科目 类型分类
+ */
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.example.adapter.ViewPagerListViewAdapter;
 import com.example.bean.Catalog;
 import com.example.examhelper.R;
+import com.example.helper.AppContext;
 import com.example.helper.UtilsHelper;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class SubjectActivity extends Activity{
 	private ListView lv;
-	private HashMap<String, ArrayList<Catalog>> data;
+	private int position;
 	private ViewPagerListViewAdapter adapter;
+	private AppContext ac;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,10 +33,21 @@ public class SubjectActivity extends Activity{
 	private void initView(){
 		lv = (ListView) findViewById(R.id.subjectactivity_lv);
 	}
+	@SuppressWarnings("unchecked")
 	private void initData(){
-		data = (HashMap<String, ArrayList<Catalog>>) getIntent().getExtras().getSerializable("subject_name");
-		adapter = new ViewPagerListViewAdapter(this, data.get(UtilsHelper.subject_name[1]));
+		ac = (AppContext) getApplication();
+		position = getIntent().getExtras().getInt("Subject_No");
+		ArrayList<Catalog> list_chinese = (ArrayList<Catalog>) ac.getObject(UtilsHelper.subject_name[position]);
+		adapter = new ViewPagerListViewAdapter(this,list_chinese );
 		lv.setAdapter(adapter);
+		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				Toast.makeText(SubjectActivity.this, arg2 + "", Toast.LENGTH_LONG).show();				
+			}
+		});
 	}
 	
 }
