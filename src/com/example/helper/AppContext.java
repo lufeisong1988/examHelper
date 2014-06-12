@@ -25,7 +25,8 @@ public class AppContext extends Application{
 		super.onCreate();
 	}
 	//TODO
-	/*
+	/*	subject and catalog
+	 * 	
 	 * 目录为 data/data/包名
 	 */
 	//保存对象 
@@ -93,7 +94,7 @@ public class AppContext extends Application{
 		return bExist;
 	}
 	//TODO
-	/*
+	/*item
 	 * 路径为 sdcard
 	 */
 	//保存文件
@@ -159,15 +160,23 @@ public class AppContext extends Application{
 			saveFile.mkdirs();
 		return true;
 	}
+	
 	//TODO
 	/*
 	 * 获取 单个科目下 当前页面的试题集合
 	 */
-	public static ItemList getItemList(String result,String id){
+	public static ItemList getItemList(String result,String file){
 		ItemList mItemList = null;
 		mItemList = ItemList.getItemList(result);
-		String file = id + "_" + mItemList.getPn() + "_" + mItemList.getRn();
 		setObjectToSdCard(mItemList,file);
 		return mItemList;
+	}
+	//判断缓存是否存在
+	public boolean bExistCache(String file) {
+		boolean bExist = false;
+		File rootFile = new File(UtilsHelper.SAVE_ITEMOBJECT_PATH, file);
+		if (rootFile.exists())
+			bExist = true;
+		return bExist;
 	}
 }

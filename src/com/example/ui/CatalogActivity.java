@@ -26,7 +26,7 @@ public class CatalogActivity extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.subjectactivity);
+		setContentView(R.layout.catalogactivity);
 		initView();
 		initData();
 	}
@@ -49,7 +49,6 @@ public class CatalogActivity extends Activity{
 				Bundle bundle = new Bundle();
 				bundle.putString("id", id);
 				UiHelper.IntentActivity(CatalogActivity.this, ItemActivity.class, bundle);
-				
 			}
 		});
 	}

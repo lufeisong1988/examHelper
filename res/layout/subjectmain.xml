@@ -6,14 +6,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="5" />
+        android:layout_weight="6" />
 
-    <ListView
-        android:id="@+id/activity_main_lv"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:clickable="false" >
-    </ListView>
+        android:layout_weight="1" >
+
+        <ListView
+            android:id="@+id/activity_main_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false" >
+        </ListView>
+        <include layout="@layout/load_failed_layout" />
+    </RelativeLayout>
 
 </LinearLayout>

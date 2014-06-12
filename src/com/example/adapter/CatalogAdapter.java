@@ -44,7 +44,7 @@ public class CatalogAdapter extends BaseAdapter{
 			ViewHolder vh = null;
 			if(convertView == null){
 				vh = new ViewHolder();
-				convertView = LayoutInflater.from(mContext).inflate(R.layout.viewpagerlistviewadapter, null);
+				convertView = LayoutInflater.from(mContext).inflate(R.layout.catalogadapter, null);
 				vh.noTv = (TextView) convertView.findViewById(R.id.viewpagerlistviewadapter_id);
 				vh.nameTv = (TextView) convertView.findViewById(R.id.viewpagerlistviewadapter_name);
 				convertView.setTag(vh); 

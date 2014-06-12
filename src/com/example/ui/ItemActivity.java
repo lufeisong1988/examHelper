@@ -2,6 +2,7 @@ package com.example.ui;
 /**
  * 每个试题科目页面
  */
+import com.example.adapter.ItemViewPagerAdapter;
 import com.example.examhelper.R;
 import com.example.helper.AppContext;
 import com.example.helper.HttpHelper;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.widget.Toast;
 
@@ -20,6 +22,10 @@ public class ItemActivity extends FragmentActivity{
 	private ViewPager itemVP;
 	private String id;
 	private AppContext ac;
+	
+	private ItemViewPagerAdapter mItemAdapter;
+	private FragmentManager fm = getSupportFragmentManager();
+	private int size = 0;
 	private Handler mHandler = new Handler(){
 
 		@Override
@@ -27,7 +33,7 @@ public class ItemActivity extends FragmentActivity{
 			switch(msg.what){
 			case 1:
 				if((String)msg.obj != null && !((String)msg.obj).equals("") && !((String)msg.obj).equals("null")){
-					AppContext.getItemList((String)msg.obj, id);
+//					AppContext.getItemList((String)msg.obj, id);
 				}
 				break;
 			case 0:
@@ -45,15 +51,19 @@ public class ItemActivity extends FragmentActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.itemactivity);
 		initView();
-		initData();
+//		initData();
 	}
 	private void initView(){
-		itemVP = (ViewPager) findViewById(R.id.itemactivity_vp);
-	}
-	private void initData(){
 		ac = (AppContext) getApplication();
 		id = getIntent().getExtras().getString("id");
-		String url = HttpPortUtils.GET_HTTP_ITEM + HttpPortUtils.GET_HTTP_SUBJECT_SORT + HttpPortUtils.AppKey + HttpPortUtils.GET_HTTP_CATALOG_ID + id + HttpPortUtils.GET_HTTP_PN + "0" + HttpPortUtils.GET_HTTP_RN + "30";
-		HttpHelper.sendHttpGet(mHandler,url , null);
+		
+		itemVP = (ViewPager) findViewById(R.id.itemactivity_vp);
+		mItemAdapter = new ItemViewPagerAdapter(fm,id);
+		itemVP.setAdapter(mItemAdapter);
 	}
+//	private void initData(){
+//		
+//		String url = HttpPortUtils.GET_HTTP_ITEM + HttpPortUtils.GET_HTTP_SUBJECT_SORT + HttpPortUtils.AppKey + HttpPortUtils.GET_HTTP_CATALOG_ID + id + HttpPortUtils.GET_HTTP_PN + "0" + HttpPortUtils.GET_HTTP_RN + "30";
+//		HttpHelper.sendHttpGet(mHandler,url , null);
+//	}
 }

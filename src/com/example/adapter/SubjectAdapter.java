@@ -2,8 +2,9 @@ package com.example.adapter;
 /**
  * 总科目适配器
  */
+import java.util.ArrayList;
+
 import com.example.examhelper.R;
-import com.example.helper.UtilsHelper;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,12 +16,14 @@ import android.widget.TextView;
 
 public class SubjectAdapter extends BaseAdapter{
 	private Context mContext;
-	public SubjectAdapter(Context mContext){
+	private ArrayList<String> subject_name;
+	public SubjectAdapter(Context mContext,ArrayList<String> subject_name){
 		this.mContext = mContext;
+		this.subject_name = subject_name;
 	}
 	@Override
 	public int getCount() {
-		return UtilsHelper.subject_name.length;
+		return subject_name.size();
 	}
 
 	@Override
@@ -38,7 +41,7 @@ public class SubjectAdapter extends BaseAdapter{
 		ViewHolder vh = null;
 		if(convertView == null){
 			vh = new ViewHolder();
-			convertView = LayoutInflater.from(mContext).inflate(R.layout.menuadapter, null);
+			convertView = LayoutInflater.from(mContext).inflate(R.layout.subjectadapter, null);
 			vh.subject_iv = (ImageView) convertView.findViewById(R.id.menuadapter_subject_iv);
 			vh.subject_tv = (TextView) convertView.findViewById(R.id.menuadapter_subject_tv);
 			convertView.setTag(vh);
@@ -46,7 +49,7 @@ public class SubjectAdapter extends BaseAdapter{
 			vh = (ViewHolder) convertView.getTag();
 		}
 		vh.subject_iv.setBackgroundResource(R.drawable.ic_launcher);
-		vh.subject_tv.setText(UtilsHelper.subject_name[position]);
+		vh.subject_tv.setText(subject_name.get(position));
 		return convertView;
 	}
 	class ViewHolder{
