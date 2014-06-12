@@ -7,9 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.Activity;
-
-import com.example.helper.AppContext;
 
 /**
  * 试题 集合 

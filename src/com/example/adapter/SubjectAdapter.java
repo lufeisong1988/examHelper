@@ -1,11 +1,7 @@
 package com.example.adapter;
 /**
- * 主页适配器
+ * 总科目适配器
  */
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import com.example.bean.Catalog;
 import com.example.examhelper.R;
 import com.example.helper.UtilsHelper;
 
@@ -17,12 +13,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MenuAdapter extends BaseAdapter{
+public class SubjectAdapter extends BaseAdapter{
 	private Context mContext;
-//	private HashMap<String, ArrayList<Catalog>> getResultData;
-	public MenuAdapter(Context mContext,HashMap<String, ArrayList<Catalog>> getResultData){
+	public SubjectAdapter(Context mContext){
 		this.mContext = mContext;
-//		this.getResultData = getResultData;
 	}
 	@Override
 	public int getCount() {

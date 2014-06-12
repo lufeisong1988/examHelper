@@ -7,14 +7,16 @@ import com.example.helper.AppContext;
 import com.example.helper.HttpHelper;
 import com.example.utils.HttpPortUtils;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.widget.Toast;
 
-public class ItemActivity extends Activity{
+@SuppressLint("HandlerLeak")
+public class ItemActivity extends FragmentActivity{
 	private ViewPager itemVP;
 	private String id;
 	private AppContext ac;

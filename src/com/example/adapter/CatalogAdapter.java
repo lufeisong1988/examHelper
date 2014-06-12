@@ -17,10 +17,10 @@ import android.widget.TextView;
  * @author lufeisong
  *
  */
-public class ViewPagerListViewAdapter extends BaseAdapter{
+public class CatalogAdapter extends BaseAdapter{
 	private Context mContext;
 	private ArrayList<Catalog> data;
-	public ViewPagerListViewAdapter(Context mContext,ArrayList<Catalog> data){
+	public CatalogAdapter(Context mContext,ArrayList<Catalog> data){
 		this.mContext = mContext;
 		this.data = data;
 	}
