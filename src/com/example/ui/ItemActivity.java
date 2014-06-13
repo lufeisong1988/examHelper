@@ -3,6 +3,7 @@ package com.example.ui;
  * 每个试题科目页面
  */
 import com.example.adapter.ItemViewPagerAdapter;
+import com.example.bean.ItemList;
 import com.example.examhelper.R;
 import com.example.helper.AppContext;
 import com.example.helper.HttpHelper;
@@ -23,18 +24,25 @@ public class ItemActivity extends FragmentActivity{
 	private String id;
 	private AppContext ac;
 	
+	private String saveFile;
 	private ItemViewPagerAdapter mItemAdapter;
 	private FragmentManager fm = getSupportFragmentManager();
-	private int size = 0;
 	private Handler mHandler = new Handler(){
 
 		@Override
 		public void handleMessage(Message msg) {
 			switch(msg.what){
-			case 1:
+			case 1://在线读取
 				if((String)msg.obj != null && !((String)msg.obj).equals("") && !((String)msg.obj).equals("null")){
-//					AppContext.getItemList((String)msg.obj, id);
+					ItemList mItemList = AppContext.getItemList((String)msg.obj, id);
+					mItemAdapter.changeCount(Integer.parseInt(mItemList.getTotalNum()) / 30);
+					mItemAdapter.notifyDataSetChanged();
 				}
+				break;
+			case 2://读缓存
+				ItemList mItemList = (ItemList) AppContext.getObjectFromSdCard(saveFile);
+				mItemAdapter.changeCount(Integer.parseInt(mItemList.getTotalNum()) / 30);
+				mItemAdapter.notifyDataSetChanged();
 				break;
 			case 0:
 				Toast.makeText(ItemActivity.this, "数据为空...", Toast.LENGTH_LONG).show();
@@ -51,7 +59,7 @@ public class ItemActivity extends FragmentActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.itemactivity);
 		initView();
-//		initData();
+		initData();
 	}
 	private void initView(){
 		ac = (AppContext) getApplication();
@@ -59,11 +67,12 @@ public class ItemActivity extends FragmentActivity{
 		
 		itemVP = (ViewPager) findViewById(R.id.itemactivity_vp);
 		mItemAdapter = new ItemViewPagerAdapter(fm,id);
+		mItemAdapter.changeCount(0);
 		itemVP.setAdapter(mItemAdapter);
 	}
-//	private void initData(){
-//		
-//		String url = HttpPortUtils.GET_HTTP_ITEM + HttpPortUtils.GET_HTTP_SUBJECT_SORT + HttpPortUtils.AppKey + HttpPortUtils.GET_HTTP_CATALOG_ID + id + HttpPortUtils.GET_HTTP_PN + "0" + HttpPortUtils.GET_HTTP_RN + "30";
-//		HttpHelper.sendHttpGet(mHandler,url , null);
-//	}
+	private void initData(){
+		String url = HttpPortUtils.GET_HTTP_ITEM + HttpPortUtils.GET_HTTP_SUBJECT_SORT + HttpPortUtils.AppKey + HttpPortUtils.GET_HTTP_CATALOG_ID + id + HttpPortUtils.GET_HTTP_PN + "0" + HttpPortUtils.GET_HTTP_RN + "30";
+		saveFile = id + "_" + "0" + "_" + "30";
+		HttpHelper.itemHttpGet(ac, saveFile, mHandler, url, null);
+	}
 }

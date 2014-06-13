@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import com.example.adapter.SubjectAdapter;
 import com.example.examhelper.R;
-import com.example.helper.AppContext;
 import com.example.helper.HttpHelper;
 import com.example.helper.UiHelper;
 import com.example.helper.UtilsHelper;
@@ -33,7 +32,6 @@ import android.widget.TextView;
 
 @SuppressLint("HandlerLeak")
 public class SubjectActivity extends Activity implements OnClickListener{
-	private AppContext ac;
 	private ListView menu_lv;
 	private SubjectAdapter menuDataAdapter;
 	private ArrayList<String> subject_name = new ArrayList<String>();
@@ -90,7 +88,6 @@ public class SubjectActivity extends Activity implements OnClickListener{
 		showLoadDialog();
 	}
 	private void initData(){
-		ac = (AppContext) getApplication();
 		menuDataAdapter = new SubjectAdapter(this,subject_name);
 		menu_lv.setAdapter(menuDataAdapter);
 		loadData();

@@ -68,6 +68,7 @@ public class ItemList implements Serializable{
 				mItem.setResolve(objItem.getString("resolve"));
 				itemList.add(mItem);
 			}
+			mItemList.setItemList(itemList);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

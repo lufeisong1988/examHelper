@@ -160,11 +160,7 @@ public class AppContext extends Application{
 			saveFile.mkdirs();
 		return true;
 	}
-	
-	//TODO
-	/*
-	 * 获取 单个科目下 当前页面的试题集合
-	 */
+	//在线读取 ，并保存到sdcard缓存
 	public static ItemList getItemList(String result,String file){
 		ItemList mItemList = null;
 		mItemList = ItemList.getItemList(result);

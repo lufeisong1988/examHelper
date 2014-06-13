@@ -12,6 +12,10 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 public class ItemViewPagerAdapter extends FragmentStatePagerAdapter{
 	private String id;
+	private int count;
+	public void changeCount(int count){
+		this.count = count;
+	}
 	public ItemViewPagerAdapter(FragmentManager fm,String id) {
 		super(fm);
 		this.id = id;
@@ -24,8 +28,7 @@ public class ItemViewPagerAdapter extends FragmentStatePagerAdapter{
 
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return count;
 	}
 
 }
