@@ -8,5 +8,10 @@
     <string name="data_empty">数据为空</string>
     <string name="desc_shrinkup">收起</string>
     <string name="desc_spread">显示更多</string>
+    <string name="question">问题：</string>
+<string name="questionDifficulty">难易程度：</string>
+    <string name="sourcename">试题来源：</string>
+<string name="answer">答案：</string>
+    <string name="resolve">详解：</string>
 
 </resources>

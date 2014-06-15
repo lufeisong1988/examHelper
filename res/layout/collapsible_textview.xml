@@ -4,15 +4,120 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/desc_tv"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4.0dip"
-        android:background="@drawable/sns_clickable_bg"
-        android:gravity="center_vertical"
-        android:textColor="#ff000000"
-        android:textSize="14.0dip" />
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/question"
+            android:textColor="@color/sns_link_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/desc_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4.0dip"
+            android:background="@drawable/sns_clickable_bg"
+            android:gravity="center_vertical"
+            android:textColor="#ff000000"
+            android:textSize="14.0dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/questionDifficulty"
+            android:textColor="@color/sns_link_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/desc_questiondifficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4.0dip"
+            android:background="@drawable/sns_clickable_bg"
+            android:gravity="center_vertical"
+            android:textColor="#ff000000"
+            android:textSize="14.0dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sourcename"
+            android:textColor="@color/sns_link_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/desc_sourcename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4.0dip"
+            android:background="@drawable/sns_clickable_bg"
+            android:gravity="center_vertical"
+            android:textColor="#ff000000"
+            android:textSize="14.0dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/answer"
+            android:textColor="@color/sns_link_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/desc_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4.0dip"
+            android:background="@drawable/sns_clickable_bg"
+            android:gravity="center_vertical"
+            android:textColor="#ff000000"
+            android:textSize="14.0dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resolve"
+            android:textColor="@color/sns_link_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/desc_resolve"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4.0dip"
+            android:background="@drawable/sns_clickable_bg"
+            android:gravity="center_vertical"
+            android:textColor="#ff000000"
+            android:textSize="14.0dip" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/desc_op_tv"

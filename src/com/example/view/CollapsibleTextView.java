@@ -2,7 +2,9 @@ package com.example.view;
 
 import java.util.HashMap;
 
+import com.example.bean.Item;
 import com.example.examhelper.R;
+
 
 
 
@@ -25,6 +27,11 @@ public class CollapsibleTextView extends LinearLayout //implements  OnClickListe
     private Context  context;
     private TextView desc;
     private TextView descOp;
+    private TextView descDiff;
+    private TextView descName;
+    private TextView descAsw;
+    private TextView descRes;
+    
 
     private String shrinkup;
     private String spread;
@@ -57,10 +64,14 @@ public class CollapsibleTextView extends LinearLayout //implements  OnClickListe
     	return   collapsibletextview.spread;
     }
     
-    public  void setDesc(CharSequence charSequence, BufferType bufferType,HashMap hashMap,int i) {
+    public  void setDesc(CharSequence charSequence, Item item,BufferType bufferType,HashMap hashMap,int i) {
     	mHashMap = hashMap;
     	position = i;
         desc.setText(charSequence, bufferType);
+        descDiff.setText(item.getQuestionDifficulty().toString());
+        descName.setText(item.getSourcename().toString());
+        descAsw.setText(item.getAnswer().toString());
+        descRes.setText(item.getResolve().toString());
         if(hashMap.get(i)!=null) {
         	flag = true;
         	switch(((Integer)hashMap.get(Integer.valueOf(i))).intValue()){
@@ -88,12 +99,16 @@ public class CollapsibleTextView extends LinearLayout //implements  OnClickListe
     }
 
     private void initView(){
-    	   shrinkup = context.getString(R.string.desc_shrinkup);
-           spread = context.getString(R.string.desc_spread);
-           View view = inflate(context, R.layout.collapsible_textview, this);
-           view.setPadding(0, -3, 0, 0);
-           desc = (TextView) view.findViewById(R.id.desc_tv);
-           descOp = (TextView) view.findViewById(R.id.desc_op_tv);
+		shrinkup = context.getString(R.string.desc_shrinkup);
+		spread = context.getString(R.string.desc_spread);
+		View view = inflate(context, R.layout.collapsible_textview, this);
+		view.setPadding(0, -3, 0, 0);
+		desc = (TextView) view.findViewById(R.id.desc_question);
+		descOp = (TextView) view.findViewById(R.id.desc_op_tv);
+		descDiff = (TextView) view.findViewById(R.id.desc_questiondifficulty);
+		descName = (TextView) view.findViewById(R.id.desc_sourcename);
+		descAsw = (TextView) view.findViewById(R.id.desc_answer);
+		descRes = (TextView) view.findViewById(R.id.desc_resolve);
     }
     
     public void onOpClick(View.OnClickListener onClickListener) {

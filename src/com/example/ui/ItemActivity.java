@@ -71,7 +71,7 @@ public class ItemActivity extends FragmentActivity{
 		itemVP.setAdapter(mItemAdapter);
 	}
 	private void initData(){
-		String url = HttpPortUtils.GET_HTTP_ITEM + HttpPortUtils.GET_HTTP_SUBJECT_SORT + HttpPortUtils.AppKey + HttpPortUtils.GET_HTTP_CATALOG_ID + id + HttpPortUtils.GET_HTTP_PN + "0" + HttpPortUtils.GET_HTTP_RN + "30";
+		String url = HttpPortUtils.GET_HTTP_ITEM + HttpPortUtils.GET_HTTP_SUBJECT_SORT + HttpPortUtils.AppKey + HttpPortUtils.GET_HTTP_CATALOG_ID + id + HttpPortUtils.GET_HTTP_PN + "0" + HttpPortUtils.GET_HTTP_RN + "30" + "&dtype=json";
 		saveFile = id + "_" + "0" + "_" + "30";
 		HttpHelper.itemHttpGet(ac, saveFile, mHandler, url, null);
 	}

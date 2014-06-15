@@ -4,7 +4,7 @@ package com.example.fragment;
  */
 import java.util.ArrayList;
 
-import com.example.adapter.ItemExpListViewAdapter;
+import com.example.adapter.ItemListViewAdapter;
 import com.example.bean.Item;
 import com.example.bean.ItemList;
 import com.example.examhelper.R;
@@ -20,7 +20,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 @SuppressLint("HandlerLeak")
@@ -30,7 +30,7 @@ public class ItemFragment extends Fragment{
 	private int pageCount = 30;
 	private String saveFile;
 	private ArrayList<Item> itemData = new ArrayList<Item>();
-	private ItemExpListViewAdapter adapter;
+	private ItemListViewAdapter adapter;
 	private AppContext ac;
 	private Handler mHandler = new Handler(){
 
@@ -73,10 +73,10 @@ public class ItemFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.itemfragment, null);
-		ExpandableListView lv = (ExpandableListView) view.findViewById(R.id.itemfragment_lv);
+		ListView lv = (ListView) view.findViewById(R.id.itemfragment_lv);
 		TextView tv = (TextView) view.findViewById(R.id.item_tv);
 		tv.setText("this is" + position + "");
-		adapter = new ItemExpListViewAdapter(getActivity(), itemData);
+		adapter = new ItemListViewAdapter(getActivity(), itemData);
 		lv.setAdapter(adapter);
 		initData();
 		return view;
@@ -84,7 +84,7 @@ public class ItemFragment extends Fragment{
 	private void initData(){
 		ac = (AppContext) getActivity().getApplication();
 		saveFile = id + "_" + position * pageCount + "_" + pageCount;
-		String url = HttpPortUtils.GET_HTTP_ITEM + HttpPortUtils.GET_HTTP_SUBJECT_SORT + HttpPortUtils.AppKey + HttpPortUtils.GET_HTTP_CATALOG_ID + id + HttpPortUtils.GET_HTTP_PN + position * pageCount + HttpPortUtils.GET_HTTP_RN + pageCount;
+		String url = HttpPortUtils.GET_HTTP_ITEM + HttpPortUtils.GET_HTTP_SUBJECT_SORT + HttpPortUtils.AppKey + HttpPortUtils.GET_HTTP_CATALOG_ID + id + HttpPortUtils.GET_HTTP_PN + position * pageCount + HttpPortUtils.GET_HTTP_RN + pageCount + "&dtype=json";
 		HttpHelper.itemHttpGet(ac, saveFile, mHandler, url, null);
 	}
 }

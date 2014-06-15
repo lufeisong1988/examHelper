@@ -9,7 +9,10 @@ package com.example.ui;
 import java.util.ArrayList;
 
 import com.example.adapter.SubjectAdapter;
+import com.example.bean.CatalogList;
+import com.example.bean.ItemList;
 import com.example.examhelper.R;
+import com.example.helper.AppContext;
 import com.example.helper.HttpHelper;
 import com.example.helper.UiHelper;
 import com.example.helper.UtilsHelper;
@@ -54,6 +57,7 @@ public class SubjectActivity extends Activity implements OnClickListener{
 					for(int i = 0;i < UtilsHelper.subject_name.length;i++){
 						subject_name.add(UtilsHelper.subject_name[i]);
 					}
+					CatalogList.getCatalogList((String)msg.obj, SubjectActivity.this);
 					menuDataAdapter.notifyDataSetChanged();
 				}
 				break;
